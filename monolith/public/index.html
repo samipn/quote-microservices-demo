@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Quotes Monolith</title>
+  </head>
+  <body>
+    <h1>Random Quote (Monolith)</h1>
+    <p id="quote">Loading...</p>
+    <button id="btn">New quote</button>
+
+    <script>
+      async function loadQuote() {
+        const res = await fetch('/api/quote');
+        const data = await res.json();
+        document.getElementById('quote').innerText = data.quote;
+      }
+
+      document.getElementById('btn').addEventListener('click', loadQuote);
+      loadQuote();
+    </script>
+  </body>
+</html>
